@@ -1,0 +1,15 @@
+version: '2.3'
+services:
+  plugin:
+    image: registry.gitlab.com/vaisawesome/randd/nlp/capu:0.1
+    build: .
+    ports:
+      - "4445:4445"
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - .:/workspace
+      - /data/processed/nlp/capu-vn/data-bin/vlsp/raw:/workspace/data-bin/vlsp/raw
+      - /data/models/NLP/capu/capu-vi/model-bin:/data/models/NLP/capu/capu-vi/model-bin
+
